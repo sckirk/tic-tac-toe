@@ -1,4 +1,7 @@
-var Game = require('game').default;
-var game = new Game();
+import Board from 'board';
 
-// export default;
+var Game = function() {
+    this.boardArray = new Board();
+};
+
+export default Game;
