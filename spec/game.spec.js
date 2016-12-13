@@ -4,7 +4,7 @@ describe('Game', function() {
     var testGame = new Game();
 
     it('will create a board', function() {
-        expect(testGame.boardArray).toBeDefined(true);
+        expect(testGame.gameBoard).toBeDefined(true);
     });
 
     it('will create two players', function() {

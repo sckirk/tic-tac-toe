@@ -1,5 +1,5 @@
 var Board = function() {
-    return [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']];
+    this.boardArray =  [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']];
 };
 
 export default Board;
