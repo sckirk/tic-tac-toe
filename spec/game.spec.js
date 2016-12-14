@@ -50,32 +50,32 @@ describe('Game', function() {
     });
 
     it('will return true when playerX wins and winner will be the playerX object', function() {
-      expect(testGame.sessionGameCount).toEqual(0);
+      // expect(testGame.sessionGameCount).toEqual(0);
       expect(testGame.isDone()).toEqual(false);
       testGame.gameBoard.boardArray = [["X", "X", "X"], ["O", "X", "O"], [" ", "X", "O"]];
       expect(testGame.isDone()).toEqual(true);
       expect(testGame.winner).toBe(testGame.playerX);
-      expect(testGame.sessionGameCount).toEqual(1);
+      // expect(testGame.sessionGameCount).toEqual(1);
     });
 
     it('will return true when playerO wins', function() {
-      expect(testGame.sessionGameCount).toEqual(0);
+      // expect(testGame.sessionGameCount).toEqual(0);
       expect(testGame.isDone()).toEqual(false);
       testGame.switchTurn();
       testGame.gameBoard.boardArray = [["O", "O", "O"], ["O", "X", "O"], [" ", "X", "O"]];
       expect(testGame.isDone()).toEqual(true);
       expect(testGame.winner).toBe(testGame.playerO);
-      expect(testGame.sessionGameCount).toEqual(1);
+      // expect(testGame.sessionGameCount).toEqual(1);
     });
   });
 
   it('will return true when there\'s a tie', function() {
-    expect(testGame.sessionGameCount).toEqual(0);
+    // expect(testGame.sessionGameCount).toEqual(0);
     expect(testGame.isDone()).toEqual(false);
     testGame.gameBoard.boardArray = [["X", "O", "X"], ["O", "X", "X"], ["O", "X", "O"]];
     expect(testGame.isDone()).toEqual(true);
     expect(testGame.winner).toEqual('Tie game, no winner this round!');
-    expect(testGame.sessionGameCount).toEqual(1);
+    // expect(testGame.sessionGameCount).toEqual(1);
   });
 
   describe('playTurn', function() {

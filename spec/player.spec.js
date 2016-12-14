@@ -16,6 +16,11 @@ describe('Player', function() {
         expect(testPlayerO.mark).toEqual('O');
     });
 
+    // it('will switch which player starts with each game (playerX ) ', function() {
+    //     expect(testPlayerX.mark).toEqual('X');
+    //     expect(testPlayerO.mark).toEqual('O');
+    // });
+
     describe('setMark', function() {
         it('will add applicable mark to the game\'s board', function() {
             expect(testPlayerX.setMark(testGame.gameBoard, 0, 0)).toEqual(testPlayerX.mark);

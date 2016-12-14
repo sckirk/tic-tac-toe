@@ -6,7 +6,7 @@ var Game = function() {
     this.playerX = new Player('X');
     this.playerO = new Player('O');
     this.winner = undefined;
-    this.sessionGameCount = 0;
+    // this.sessionGameCount = 0;
 
     this.currentPlayer = this.playerX; // this line will be changed later when we begin "switching" which player starts each game first within multiple sessions
 };

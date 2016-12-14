@@ -1,15 +1,22 @@
+// import Game from 'game';
+
 var Player = function(mark) {
     this.mark = mark;
 
-    // if the game session count is odd
-    if (mark == "X") {
-        this.active = true;
-    } else if (mark == "O") {
-        this.active = false;
-    }
+    // if (Game.sessionGameCount % 2 === 0) {
+      if (mark == "X") {
+          this.active = true;
+      } else if (mark == "O") {
+          this.active = false;
+      }
+    // } else {
+    //   if (mark == "O") {
+    //       this.active = true;
+    //   } else if (mark == "X") {
+    //       this.active = false;
+    //   }
+    // }
 
-    // if the game session count is event
-    // will do opposite of the above conditional
 };
 
 Player.prototype.setMark = function(board, firstArrayIndex, secondArrayIndex) {
