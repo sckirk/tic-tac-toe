@@ -7,6 +7,10 @@ var Game = function() {
     this.playerO = new Player('O');
 };
 
+// Game.prototype.isDone = function() {
+//
+// };
+
 // this.playerX.setMark(this.gameBoard, x, y);
 
 export default Game;

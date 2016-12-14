@@ -14,7 +14,7 @@ Player.prototype.setMark = function(board, firstArrayIndex, secondArrayIndex) {
     } else {
         throw 'that space has already been assigned, please try again';
     }
-    console.log(board.boardArray); // comment out when finished score testing
+    // console.log(board.boardArray); // comment out when finished score testing
     return board.boardArray[firstArrayIndex][secondArrayIndex]; // returned for testing purposes
 };
 

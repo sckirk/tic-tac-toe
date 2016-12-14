@@ -1,7 +1,10 @@
 import Game from 'game';
 
 describe('Game', function() {
-    var testGame = new Game();
+    var testGame;
+    beforeEach(function() {
+        testGame = new Game();
+    });
 
     it('will create a board', function() {
         expect(testGame.gameBoard).toBeDefined(true);
