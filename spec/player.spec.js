@@ -1,8 +1,6 @@
 import Player from 'player';
 import Game from 'game';
 
-var testGame = new Game();
-
 describe('Player', function() {
     var testPlayerX = new Player('X');
     var testPlayerO = new Player('O');
@@ -12,10 +10,22 @@ describe('Player', function() {
         expect(testPlayerO.mark).toEqual('O');
     });
 
-  describe('setMark', function() {
-    it('will add applicable mark to the game\'s board', function() {
-      expect(testPlayerX.setMark(testGame.gameBoard, 0, 0)).toEqual(testPlayerX.mark);
-      expect(testPlayerO.setMark(testGame.gameBoard, 2, 2)).toEqual(testPlayerO.mark);
+    describe('setMark', function() {
+        it('will add applicable mark to the game\'s board', function() {
+            var testGame = new Game();
+
+            expect(testPlayerX.setMark(testGame.gameBoard, 0, 0)).toEqual(testPlayerX.mark);
+            expect(testPlayerO.setMark(testGame.gameBoard, 2, 2)).toEqual(testPlayerO.mark);
+        });
+
+        it('will not allow a player to set a mark in a space that\'s already been set', function() {
+            var testGame = new Game();
+
+            testPlayerX.setMark(testGame.gameBoard, 0, 0);
+            
+            expect(function () {
+                testPlayerO.setMark(testGame.gameBoard, 0, 0);
+            }).toThrow();
+        });
     });
-  });
 });
