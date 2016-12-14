@@ -5,7 +5,8 @@ var Game = function() {
     this.gameBoard = new Board();
     this.playerX = new Player('X');
     this.playerO = new Player('O');
-    var winner;
+    this.winner = undefined;
+    this.sessionGameCount = 0;
 
     this.currentPlayer = this.playerX; // this line will be changed later when we begin "switching" which player starts each game first within multiple sessions
 };
@@ -61,10 +62,12 @@ Game.prototype.isDone = function() {
         this.gameBoard.boardArray[2][2] == checkedMark)) {
 
         this.winner = this.currentPlayer;
+        this.sessionGameCount += 1;
         return true;
 
     } else if (this.gameBoard.isFull() === true) {
         this.winner = "Tie game, no winner this round!";
+        this.sessionGameCount += 1;
         return true;
 
     } else {
