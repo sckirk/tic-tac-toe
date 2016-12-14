@@ -6,24 +6,23 @@ var Game = function() {
     this.playerX = new Player('X');
     this.playerO = new Player('O');
     var winner;
+
+    this.currentPlayer = this.playerX; // this line will be changed later when we begin "switching" which player starts each game first within multiple sessions
 };
 
 Game.prototype.switchTurn = function() {
     this.playerX.active = !(this.playerX.active);
     this.playerO.active = !(this.playerO.active);
+
+    if (this.playerX.active === true) {
+        this.currentPlayer = this.playerX;
+    } else {
+        this.currentPlayer = this.playerO;
+    }
 };
 
 Game.prototype.isDone = function() {
-    var checkedMark;
-    var possibleWinner;
-
-    if (this.playerX.active === true) {
-        checkedMark = this.playerX.mark;
-        possibleWinner = this.playerX;
-    } else {
-        checkedMark = this.playerO.mark;
-        possibleWinner = this.playerO;
-    }
+    var checkedMark = this.currentPlayer.mark;
 
     if (
         // the two diagonal winning possibilities:
@@ -61,7 +60,7 @@ Game.prototype.isDone = function() {
         this.gameBoard.boardArray[2][1] == checkedMark &&
         this.gameBoard.boardArray[2][2] == checkedMark)) {
 
-        this.winner = possibleWinner;
+        this.winner = this.currentPlayer;
         return true;
 
     } else if (this.gameBoard.isFull() === true) {
@@ -70,6 +69,16 @@ Game.prototype.isDone = function() {
 
     } else {
         return false;
+    }
+};
+
+Game.prototype.playTurn = function(firstArrayIndex, secondArrayIndex) {
+    if (this.currentPlayer.setMark(this.gameBoard, firstArrayIndex, secondArrayIndex)) {
+        if (this.isDone()) {
+            return this.winner;
+        } else {
+            this.switchTurn();
+        }
     }
 
 };

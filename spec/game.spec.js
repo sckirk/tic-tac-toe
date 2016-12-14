@@ -24,16 +24,20 @@ describe('Game', function() {
   });
 
   describe('switchTurn', function() {
-    it('will switch Player X from the active player to the inactive player', function() {
+    it('will switch Player X from the active player to the inactive player and back to active again', function() {
       expect(testGame.playerX.active).toEqual(true);
       testGame.switchTurn();
       expect(testGame.playerX.active).toEqual(false);
+      testGame.switchTurn();
+      expect(testGame.playerX.active).toEqual(true);
     });
 
-    it('will switch Player O from the inactive player to the active player', function() {
+    it('will switch Player O from the inactive player to the active player and back to inactive', function() {
       expect(testGame.playerO.active).toEqual(false);
       testGame.switchTurn();
       expect(testGame.playerO.active).toEqual(true);
+      testGame.switchTurn();
+      expect(testGame.playerO.active).toEqual(false);
     });
   });
 
@@ -66,5 +70,61 @@ describe('Game', function() {
     testGame.gameBoard.boardArray = [["X", "O", "X"], ["O", "X", "X"], ["O", "X", "O"]];
     expect(testGame.isDone()).toEqual(true);
     expect(testGame.winner).toEqual('Tie game, no winner this round!');
+  });
+
+  describe('playTurn', function() {
+    it('will throw an error if someone tries to play in a space that has already been played', function() {
+      testGame.playTurn(0,0);
+      expect(function() {
+          testGame.playTurn(0,0);
+      }).toThrow();
+    });
+
+    it('will switch players when playTurn is called and the game is still going [no one has won]', function() {
+        expect(testGame.currentPlayer).toBe(testGame.playerX);
+        testGame.playTurn(0,0);
+        expect(testGame.currentPlayer).toBe(testGame.playerO);
+    });
+
+    it('will return the winner player object when playerX wins and the board is not yet full', function() {
+        testGame.playTurn(1,1); // X
+        testGame.playTurn(0,1); // O
+        testGame.playTurn(0,2); // X
+        testGame.playTurn(2,1); // O
+        expect(testGame.playTurn(2,0)).toEqual(testGame.playerX); // X -- winning move
+    });
+
+    it('will return the winner player object when playerO wins and the board is not yet full', function() {
+        testGame.playTurn(0,1); // X
+        testGame.playTurn(1,1); // O
+        testGame.playTurn(2,2); // X
+        testGame.playTurn(0,2); // O
+        testGame.playTurn(2,1); // X
+        expect(testGame.playTurn(2,0)).toEqual(testGame.playerO); // O -- winning move
+    });
+
+    it('will return the winner player object when playerX wins on the final turn and the board is full', function() {
+        testGame.playTurn(1,1); // X
+        testGame.playTurn(0,1); // O
+        testGame.playTurn(0,2); // X
+        testGame.playTurn(0,0); // O
+        testGame.playTurn(1,0); // X
+        testGame.playTurn(1,2); // O
+        testGame.playTurn(2,1); // X
+        testGame.playTurn(2,2); // O
+        expect(testGame.playTurn(2,0)).toEqual(testGame.playerX); // X -- winning move
+    });
+
+    it('will return the tie message when the board is full and no winner', function() {
+        testGame.playTurn(1,1); // X
+        testGame.playTurn(0,1); // O
+        testGame.playTurn(0,2); // X
+        testGame.playTurn(0,0); // O
+        testGame.playTurn(1,0); // X
+        testGame.playTurn(1,2); // O
+        testGame.playTurn(2,1); // X
+        testGame.playTurn(2,0); // O
+        expect(testGame.playTurn(2,2)).toEqual("Tie game, no winner this round!"); // X -- last move, TIED
+    });
   });
 });
