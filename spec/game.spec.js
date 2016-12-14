@@ -23,5 +23,17 @@ describe('Game', function() {
         expect(testGame.playerO.active).toBeDefined(false);
     });
 
+  describe('switchTurn', function() {
+    it('will switch Player X from the active player to the inactive player', function() {
+        expect(testGame.playerX.active).toEqual(true);
+        testGame.switchTurn();
+        expect(testGame.playerX.active).toEqual(false);
+    });
 
+    it('will switch Player O from the inactive player to the active player', function() {
+        expect(testGame.playerO.active).toEqual(false);
+        testGame.switchTurn();
+        expect(testGame.playerO.active).toEqual(true);
+    });
+  });
 });
