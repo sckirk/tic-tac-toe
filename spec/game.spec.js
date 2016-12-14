@@ -38,22 +38,33 @@ describe('Game', function() {
   });
 
   describe('isDone', function() {
-    it('will return false if the game is not finished', function() {
+    it('will return false if the game is not finished and the game winner will remain undefined', function() {
       expect(testGame.isDone()).toEqual(false);
       testGame.gameBoard.boardArray = [["X", "O", "X"], ["O", "X", " "], [" ", "X", "O"]];
       expect(testGame.isDone()).toEqual(false);
+      expect(testGame.winner).not.toBeDefined(true); // this confirms winner remains undefined
     });
 
-    it('will return true when there\'s a winner', function() {
+    it('will return true when playerX wins and winner will be the playerX object', function() {
       expect(testGame.isDone()).toEqual(false);
       testGame.gameBoard.boardArray = [["X", "X", "X"], ["O", "X", "O"], [" ", "X", "O"]];
       expect(testGame.isDone()).toEqual(true);
+      expect(testGame.winner).toBe(testGame.playerX);
+    });
+
+    it('will return true when playerO wins', function() {
+      expect(testGame.isDone()).toEqual(false);
+      testGame.switchTurn();
+      testGame.gameBoard.boardArray = [["O", "O", "O"], ["O", "X", "O"], [" ", "X", "O"]];
+      expect(testGame.isDone()).toEqual(true);
+      expect(testGame.winner).toBe(testGame.playerO);
     });
   });
 
   it('will return true when there\'s a tie', function() {
     expect(testGame.isDone()).toEqual(false);
-    testGame.gameBoard.boardArray = [["X", "O", "X"], ["O", "X", "O"], ["X", "X", "O"]];
+    testGame.gameBoard.boardArray = [["X", "O", "X"], ["O", "X", "X"], ["O", "X", "O"]];
     expect(testGame.isDone()).toEqual(true);
+    expect(testGame.winner).toEqual('Tie game, no winner this round!');
   });
 });

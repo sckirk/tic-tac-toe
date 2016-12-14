@@ -14,7 +14,6 @@ Game.prototype.switchTurn = function() {
 };
 
 Game.prototype.isDone = function() {
-    var winner;
     var checkedMark;
     var possibleWinner;
 
@@ -57,16 +56,16 @@ Game.prototype.isDone = function() {
         (this.gameBoard.boardArray[1][0] == checkedMark &&
         this.gameBoard.boardArray[1][1] == checkedMark &&
         this.gameBoard.boardArray[1][2] == checkedMark) ||
-        
+
         (this.gameBoard.boardArray[2][0] == checkedMark &&
         this.gameBoard.boardArray[2][1] == checkedMark &&
         this.gameBoard.boardArray[2][2] == checkedMark)) {
 
-        winner = possibleWinner;
+        this.winner = possibleWinner;
         return true;
 
     } else if (this.gameBoard.isFull() === true) {
-        winner = "Tie game, no winner this round!";
+        this.winner = "Tie game, no winner this round!";
         return true;
 
     } else {
