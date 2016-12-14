@@ -2,45 +2,76 @@ import Board from 'board';
 import Player from 'player';
 
 var Game = function() {
-  this.gameBoard = new Board();
-  this.playerX = new Player('X');
-  this.playerO = new Player('O');
-  var winner;
+    this.gameBoard = new Board();
+    this.playerX = new Player('X');
+    this.playerO = new Player('O');
+    var winner;
 };
 
 Game.prototype.switchTurn = function() {
-  this.playerX.active = !(this.playerX.active);
-  this.playerO.active = !(this.playerO.active);
+    this.playerX.active = !(this.playerX.active);
+    this.playerO.active = !(this.playerO.active);
 };
 
 Game.prototype.isDone = function() {
-  var checkedMark;
-  var possibleWinner;
+    var winner;
+    var checkedMark;
+    var possibleWinner;
 
-  if (this.playerX.active === true) {
-    checkedMark = this.playerX.mark;
-    possibleWinner = this.playerX;
-  } else {
-    checkedMark = this.playerO.mark;
-    possibleWinner = this.playerO;
-  }
+    if (this.playerX.active === true) {
+        checkedMark = this.playerX.mark;
+        possibleWinner = this.playerX;
+    } else {
+        checkedMark = this.playerO.mark;
+        possibleWinner = this.playerO;
+    }
 
-  console.log(checkedMark);
+    if (
+        // the two diagonal winning possibilities:
+        (this.gameBoard.boardArray[0][0] == checkedMark &&
+        this.gameBoard.boardArray[1][1] == checkedMark &&
+        this.gameBoard.boardArray[2][2] == checkedMark) ||
 
-  if ((this.gameBoard.boardArray[0][0] == checkedMark && this.gameBoard.boardArray[1][0] == checkedMark && this.gameBoard.boardArray[2][0] == checkedMark) || (this.gameBoard.boardArray[0][0] == checkedMark && this.gameBoard.boardArray[1][1] == checkedMark && this.gameBoard.boardArray[2][2] == checkedMark) || (this.gameBoard.boardArray[0][0] == checkedMark && this.gameBoard.boardArray[0][1] == checkedMark && this.gameBoard.boardArray[0][2] == checkedMark) || (this.gameBoard.boardArray[0][1] == checkedMark && this.gameBoard.boardArray[1][1] == checkedMark && this.gameBoard.boardArray[2][1] == checkedMark) || (this.gameBoard.boardArray[0][2] == checkedMark && this.gameBoard.boardArray[1][2] == checkedMark && this.gameBoard.boardArray[2][2] == checkedMark) || (this.gameBoard.boardArray[0][2] == checkedMark && this.gameBoard.boardArray[1][1] == checkedMark && this.gameBoard.boardArray[2][0] == checkedMark) || (this.gameBoard.boardArray[1][0] == checkedMark && this.gameBoard.boardArray[1][1] == checkedMark && this.gameBoard.boardArray[1][2] == checkedMark) || (this.gameBoard.boardArray[2][0] == checkedMark && this.gameBoard.boardArray[2][1] == checkedMark && this.gameBoard.boardArray[2][2] == checkedMark)) {
+        (this.gameBoard.boardArray[0][2] == checkedMark &&
+        this.gameBoard.boardArray[1][1] == checkedMark &&
+        this.gameBoard.boardArray[2][0] == checkedMark) ||
 
-    console.log("winner checked");
+        // the three down winning possibilities:
+        (this.gameBoard.boardArray[0][0] == checkedMark &&
+        this.gameBoard.boardArray[1][0] == checkedMark &&
+        this.gameBoard.boardArray[2][0] == checkedMark) ||
 
-    winner = possibleWinner;
-    return true;
+        (this.gameBoard.boardArray[0][1] == checkedMark &&
+        this.gameBoard.boardArray[1][1] == checkedMark &&
+        this.gameBoard.boardArray[2][1] == checkedMark) ||
 
-  } else if (this.gameBoard.isFull() === true) {
-    winner = "Tie";
-    return true;
+        (this.gameBoard.boardArray[0][2] == checkedMark &&
+        this.gameBoard.boardArray[1][2] == checkedMark &&
+        this.gameBoard.boardArray[2][2] == checkedMark) ||
 
-  } else {
-    return false;
-  }
+        // the three across winning possibilities:
+        (this.gameBoard.boardArray[0][0] == checkedMark &&
+        this.gameBoard.boardArray[0][1] == checkedMark &&
+        this.gameBoard.boardArray[0][2] == checkedMark) ||
+
+        (this.gameBoard.boardArray[1][0] == checkedMark &&
+        this.gameBoard.boardArray[1][1] == checkedMark &&
+        this.gameBoard.boardArray[1][2] == checkedMark) ||
+        
+        (this.gameBoard.boardArray[2][0] == checkedMark &&
+        this.gameBoard.boardArray[2][1] == checkedMark &&
+        this.gameBoard.boardArray[2][2] == checkedMark)) {
+
+        winner = possibleWinner;
+        return true;
+
+    } else if (this.gameBoard.isFull() === true) {
+        winner = "Tie game, no winner this round!";
+        return true;
+
+    } else {
+        return false;
+    }
 
 };
 

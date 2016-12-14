@@ -40,20 +40,20 @@ describe('Game', function() {
   describe('isDone', function() {
     it('will return false if the game is not finished', function() {
       expect(testGame.isDone()).toEqual(false);
-      testGame.boardArray = [["X", "O", "X"], ["O", "X", " "], [" ", "X", "O"]];
+      testGame.gameBoard.boardArray = [["X", "O", "X"], ["O", "X", " "], [" ", "X", "O"]];
       expect(testGame.isDone()).toEqual(false);
     });
 
     it('will return true when there\'s a winner', function() {
       expect(testGame.isDone()).toEqual(false);
-      testGame.boardArray = [["X", "X", "X"], ["O", "X", "O"], [" ", "X", "O"]];
+      testGame.gameBoard.boardArray = [["X", "X", "X"], ["O", "X", "O"], [" ", "X", "O"]];
       expect(testGame.isDone()).toEqual(true);
     });
   });
 
   it('will return true when there\'s a tie', function() {
     expect(testGame.isDone()).toEqual(false);
-    testGame.boardArray = [["X", "O", "X"], ["O", "X", "O"], ["X", "X", "O"]];
+    testGame.gameBoard.boardArray = [["X", "O", "X"], ["O", "X", "O"], ["X", "X", "O"]];
     expect(testGame.isDone()).toEqual(true);
   });
 });
