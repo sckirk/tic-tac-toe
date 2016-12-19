@@ -16,6 +16,11 @@ describe('Player', function() {
         expect(testPlayerO.mark).toEqual('O');
     });
 
+    it('will associate rosemary with playerX and peach with playerO', function() {
+        expect(testPlayerX.symbolImage).toEqual('rosemary');
+        expect(testPlayerO.symbolImage).toEqual('peach');
+    });
+
     // it('will switch which player starts with each game (playerX ) ', function() {
     //     expect(testPlayerX.mark).toEqual('X');
     //     expect(testPlayerO.mark).toEqual('O');
