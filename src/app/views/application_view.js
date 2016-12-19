@@ -7,10 +7,11 @@ import BoardView from 'app/views/board_view';
 var ApplicationView = Backbone.View.extend({
 
   events: {
-    'click restart-button': 'restartGame'
+    'click #restart-button': 'restartGame'
   },
 
-  restartGame: function() {
+  restartGame: function(event) {
+      console.log('clicked restart button to start a new game');
   }
 
 });
