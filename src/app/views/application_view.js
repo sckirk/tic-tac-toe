@@ -1,6 +1,5 @@
 import Backbone from 'backbone';
 import $ from 'jquery';
-import _ from 'underscore';
 
 import BoardView from 'app/views/board_view';
 
@@ -11,15 +10,6 @@ var ApplicationView = Backbone.View.extend({
         };
 
         this.game = new BoardView(options);
-
-        // // Keep track of our form input fields
-        // this.input = {
-        //     name: this.$('.contact-form input[name="name"]'),
-        //     email: this.$('.contact-form input[name="email"]'),
-        //     phone: this.$('.contact-form input[name="phone"]')
-        // };
-        //
-        // this.contactDetailSection = this.$('#contact-details');
     },
 
     render: function() {
