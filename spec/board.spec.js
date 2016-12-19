@@ -1,9 +1,9 @@
-import Board from 'board';
+import Board from 'app/models/board';
 
 describe('Board', function() {
-    var testBoard = new Board();
+    var testBoard;
     beforeEach(function() {
-        var testBoard = new Board();
+        testBoard = new Board();
     });
 
     it('will have a board as a 2D array', function() {
