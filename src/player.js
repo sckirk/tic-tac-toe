@@ -4,8 +4,10 @@ var Player = function(mark) {
     // if (Game.sessionGameCount % 2 === 0) {
       if (mark == "X") {
           this.active = true;
+          this.symbolImage = 'rosemary';
       } else if (mark == "O") {
           this.active = false;
+          this.symbolImage = 'peach';
       }
     // } else {
     //   if (mark == "O") {
@@ -13,7 +15,7 @@ var Player = function(mark) {
     //   } else if (mark == "X") {
     //       this.active = false;
     //   }
-    // }
+    // } // this will be implemented later once the player who starts switches each game.
 
 };
 
