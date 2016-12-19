@@ -1,5 +1,5 @@
 import Board from 'app/models/board';
-import Player from 'player';
+import Player from 'app/models/player';
 
 var Game = function() {
     this.gameBoard = new Board();

@@ -1,4 +1,4 @@
-import Player from 'player';
+import Player from 'app/models/player';
 import Game from 'game';
 
 describe('Player', function() {
