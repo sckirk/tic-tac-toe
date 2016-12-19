@@ -6,7 +6,8 @@ var Game = function() {
     this.playerX = new Player('X');
     this.playerO = new Player('O');
     this.winner = undefined;
-    // this.sessionGameCount = 0;
+    // this.sessionGameCount = 0; // this will need to be made 'active' when we want to start switching which player makes the first move
+    // I'll probably want a pop-up modal that tells the browser 'who' is playing the first move.
 
     this.currentPlayer = this.playerX; // this line will be changed later when we begin "switching" which player starts each game first within multiple sessions
 };
