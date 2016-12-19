@@ -88,6 +88,3 @@ Game.prototype.playTurn = function(firstArrayIndex, secondArrayIndex) {
 
 
 export default Game;
-
-
-// NOTE: may not need this code: this.playerX.setMark(this.gameBoard, x, y);
