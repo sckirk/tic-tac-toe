@@ -5,10 +5,17 @@ import _ from 'underscore';
 var BoardView = Backbone.View.extend({
 
   events: {
-    'click': 'markSpot'
+    'click .square': 'markSpot'
   },
 
-  markSpot: function() {
+  markSpot: function(spot) {
+      console.log(spot);
+      var spotRow = spot.currentTarget.attributes.row.value;
+      var spotCol = spot.currentTarget.attributes.col.value;
+      console.log('spotRow is:');
+      console.log(spotRow);
+      console.log('spotCol is:');
+      console.log(spotCol);
   }
 
 });
