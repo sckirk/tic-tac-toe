@@ -1,3 +1,12 @@
+h1, h3 {
+    font-family: 'Mirza', cursive;
+}
+
+body {
+    background-image: url(../imgs/bamboo.jpg);
+    background-size: 100% 100%;
+}
+
 .square {
   width: 100px;
   height: 100px;
