@@ -6,15 +6,7 @@ import Game from 'app/models/game';
 
 var ApplicationView = Backbone.View.extend({
     initialize: function() {
-        this.model = new Game();
-
-        var options = {
-            el: $('#board'),
-            model: this.model
-        };
-
-        this.game = new BoardView(options);
-        this.game.render();
+        $('#board').hide();
     },
 
     render: function() {
@@ -30,6 +22,22 @@ var ApplicationView = Backbone.View.extend({
         console.log('clicked to start a new game');
         console.log(this.model.playerX);
         console.log(this.model.gameBoard);
+        this.createNewBoard(this.model);
+    },
+
+    createNewBoard: function(boardViewModel) {
+        var options = {
+            el: $('#board'),
+            model: boardViewModel // the ApplicationView and the BoardView use the same model, the GAME.
+        };
+
+        this.game = new BoardView(options);
+
+        $('td').each(function() {
+            $(this).empty();
+        });
+
+        $('#board').show();
     }
 
 });

@@ -7,10 +7,10 @@ const Player = Backbone.Model.extend({
         // if (Game.sessionGameCount % 2 === 0) {
         if (mark == "X") {
             this.active = true;
-            this.symbolImage = 'rosemary';
+            this.symbolImage = '<img src="imgs/rosemary.jpg" alt="X - rosemary" width="100" height="100">';
         } else if (mark == "O") {
             this.active = false;
-            this.symbolImage = 'peach';
+            this.symbolImage = '<img src="imgs/peach.jpg" alt="O - peach" width="100" height="100">';
         }
         // } else {
         //   if (mark == "O") {

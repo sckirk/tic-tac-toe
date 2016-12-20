@@ -18,13 +18,15 @@ var BoardView = Backbone.View.extend({
 
         // console.log(this.model.currentPlayer.mark);
 
-        if (this.model.currentPlayer.setMark(this.model.gameBoard, spotRow, spotCol)) {
-            $(e.target).html(this.model.currentPlayer.mark);
-            if (this.model.isDone()) {
-                console.log('>>>>>>>>>GAME OVER<<<<<<<<<<');
-                alert('game over:' + this.model.winner.mark);
-            } else {
-                this.model.switchTurn();
+        if (!this.model.isDone()) {
+            if (this.model.currentPlayer.setMark(this.model.gameBoard, spotRow, spotCol)) {
+                $(e.target).html(this.model.currentPlayer.symbolImage);
+                if (this.model.isDone()) {
+                    console.log('>>>>>>>>>GAME OVER<<<<<<<<<<');
+                    alert('game over:' + this.model.winner.mark);
+                } else {
+                    this.model.switchTurn();
+                }
             }
         }
 

@@ -73,7 +73,8 @@ const Game = Backbone.Model.extend({
             return true;
 
         } else if (this.gameBoard.isFull() === true) {
-            this.winner = "Tie game, no winner this round!";
+            this.winner = {};
+            this.winner.mark = "no winner--tie";
             // this.sessionGameCount += 1; might turn on later
             return true;
 
