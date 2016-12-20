@@ -2,28 +2,34 @@ import Backbone from 'backbone';
 import $ from 'jquery';
 
 import BoardView from 'app/views/board_view';
+import Game from 'app/models/game';
 
 var ApplicationView = Backbone.View.extend({
     initialize: function() {
+        this.model = new Game();
+
         var options = {
-            el: $('#board')
+            el: $('#board'),
+            model: this.model
         };
 
         this.game = new BoardView(options);
+        this.game.render();
     },
 
     render: function() {
-        this.game.render();
-
         return this;
     },
 
     events: {
-        'click #restart-button': 'restartGame'
+        'click #new-button': 'newGame'
     },
 
-    restartGame: function(event) {
-        console.log('clicked restart button to start a new game');
+    newGame: function(event) {
+        this.model = new Game();
+        console.log('clicked to start a new game');
+        console.log(this.model.playerX);
+        console.log(this.model.gameBoard);
     }
 
 });

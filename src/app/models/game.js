@@ -82,15 +82,16 @@ const Game = Backbone.Model.extend({
         }
     },
 
-    playTurn: function(spotRow, spotCol) {
-        if (this.currentPlayer.setMark(this.gameBoard, spotRow, spotCol)) {
-            if (this.isDone()) {
-                return this.winner;
-            } else {
-                this.switchTurn();
-            }
-        }
-    },
+    // playTurn: function(spotRow, spotCol) {
+    //     if (this.currentPlayer.setMark(this.gameBoard, spotRow, spotCol)) {
+    //         if (this.isDone()) {
+    //             console.log('>>>>>>>>>GAME OVER<<<<<<<<<<');
+    //             alert('game over:' + this.winner);
+    //         } else {
+    //             this.switchTurn();
+    //         }
+    //     }
+    // },
 
 });
 

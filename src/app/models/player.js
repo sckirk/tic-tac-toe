@@ -26,11 +26,12 @@ const Player = Backbone.Model.extend({
             board.boardArray[spotRow][spotCol] = this.mark;
             // THIS IS WHERE I'M GOING TO NEED TO ADD the image into the corresponding spot square into my HTML... I think. :)
         } else {
+            alert('oops! that space has already been assigned, please try again');
             throw 'oops! that space has already been assigned, please try again';
         }
         // console.log(board.boardArray); // comment out when finished score testing
         return board.boardArray[spotRow][spotCol]; // returned purely for testing purposes
-    }    
+    }
 });
 
 export default Player;
