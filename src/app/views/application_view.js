@@ -7,6 +7,8 @@ import Game from 'app/models/game';
 var ApplicationView = Backbone.View.extend({
     initialize: function() {
         $('#board').hide();
+        $('#X').hide();
+        $('#O').hide();
     },
 
     render: function() {
@@ -38,6 +40,15 @@ var ApplicationView = Backbone.View.extend({
         });
 
         $('#board').show();
+
+        if (this.model.currentPlayer.mark == "X") {
+            $('#X').show();
+            $('#O').hide();
+        } else if (this.model.currentPlayer.mark == "O") {
+            $('#X').hide();
+            $('#O').show();
+        }
+
     }
 
 });

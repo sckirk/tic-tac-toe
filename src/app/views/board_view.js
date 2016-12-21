@@ -26,6 +26,13 @@ var BoardView = Backbone.View.extend({
                     alert('game over:' + this.model.winner.mark);
                 } else {
                     this.model.switchTurn();
+                    if (this.model.currentPlayer.mark == "X") {
+                        $('#X').show();
+                        $('#O').hide();
+                    } else if (this.model.currentPlayer.mark == "O") {
+                        $('#X').hide();
+                        $('#O').show();
+                    }
                 }
             }
         }
