@@ -5,7 +5,9 @@ import Player from 'app/models/player';
 
 const Game = Backbone.Model.extend({
     defaults: {
-        winner: undefined,
+        board: undefined,
+        outcome: undefined,
+        players: undefined
     },
 
     initialize: function() {
@@ -27,6 +29,11 @@ const Game = Backbone.Model.extend({
         } else {
             this.currentPlayer = this.playerO;
         }
+    },
+
+    endGame: function() {
+        this.board = [].concat.apply([], this.gameBoard.boardArray);
+        this.players = [this.playerX.name, this.playerO.name];
     },
 
     isDone: function() {
@@ -68,31 +75,19 @@ const Game = Backbone.Model.extend({
             this.gameBoard.boardArray[2][1] == checkedMark &&
             this.gameBoard.boardArray[2][2] == checkedMark)) { // END of LONG CONDITIONAL
 
-            this.winner = this.currentPlayer;
-            // this.sessionGameCount += 1; might turn on later
+            this.outcome = this.currentPlayer.mark;
+            this.endGame();
             return true;
 
         } else if (this.gameBoard.isFull() === true) {
-            this.winner = {};
-            this.winner.mark = "no winner--tie";
-            // this.sessionGameCount += 1; might turn on later
+            this.outcome = "draw";
+            this.endGame();
             return true;
 
         } else {
             return false;
         }
     },
-
-    // playTurn: function(spotRow, spotCol) {
-    //     if (this.currentPlayer.setMark(this.gameBoard, spotRow, spotCol)) {
-    //         if (this.isDone()) {
-    //             console.log('>>>>>>>>>GAME OVER<<<<<<<<<<');
-    //             alert('game over:' + this.winner);
-    //         } else {
-    //             this.switchTurn();
-    //         }
-    //     }
-    // },
 
 });
 

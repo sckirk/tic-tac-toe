@@ -33,7 +33,10 @@ var BoardView = Backbone.View.extend({
                 $(e.target).html(this.model.currentPlayer.symbolImage);
                 if (this.model.isDone()) {
                     console.log('>>>>>>>>>GAME OVER<<<<<<<<<<');
-                    alert('game over, winner is: ' + this.model.winner.mark);
+                    console.log(this.model.board);
+                    console.log(this.model.outcome);
+                    console.log(this.model.players);
+                    alert('game over, winner is: ' + this.model.outcome);
                 } else {
                     this.model.switchTurn();
                     this.currentPlayerImage();
@@ -41,7 +44,7 @@ var BoardView = Backbone.View.extend({
             }
         }
 
-        console.log(this.model.gameBoard.boardArray);
+        // console.log(this.model.gameBoard.boardArray);
     }
 
 });
