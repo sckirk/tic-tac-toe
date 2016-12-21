@@ -40,14 +40,7 @@ var ApplicationView = Backbone.View.extend({
         });
 
         $('#board').show();
-
-        if (this.model.currentPlayer.mark == "X") {
-            $('#X').show();
-            $('#O').hide();
-        } else if (this.model.currentPlayer.mark == "O") {
-            $('#X').hide();
-            $('#O').show();
-        }
+        this.game.currentPlayerImage();
 
     }
 

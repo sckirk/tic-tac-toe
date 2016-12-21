@@ -9,6 +9,16 @@ var BoardView = Backbone.View.extend({
         'click .square': 'playTurn'
     },
 
+    currentPlayerImage: function() {
+        if (this.model.currentPlayer.mark == "X") {
+            $('#X').show();
+            $('#O').hide();
+        } else if (this.model.currentPlayer.mark == "O") {
+            $('#X').hide();
+            $('#O').show();
+        }
+    },
+
     playTurn: function(e) {
         var spotRow = e.currentTarget.attributes.row.value;
         var spotCol = e.currentTarget.attributes.col.value;
@@ -23,16 +33,10 @@ var BoardView = Backbone.View.extend({
                 $(e.target).html(this.model.currentPlayer.symbolImage);
                 if (this.model.isDone()) {
                     console.log('>>>>>>>>>GAME OVER<<<<<<<<<<');
-                    alert('game over:' + this.model.winner.mark);
+                    alert('game over, winner is: ' + this.model.winner.mark);
                 } else {
                     this.model.switchTurn();
-                    if (this.model.currentPlayer.mark == "X") {
-                        $('#X').show();
-                        $('#O').hide();
-                    } else if (this.model.currentPlayer.mark == "O") {
-                        $('#X').hide();
-                        $('#O').show();
-                    }
+                    this.currentPlayerImage();
                 }
             }
         }

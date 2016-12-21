@@ -5,6 +5,7 @@ h1, h4 {
 body {
     background-image: url(../imgs/bamboo.jpg);
     background-size: 100% 100%;
+    text-align: center;
 }
 
 .square {
@@ -20,4 +21,9 @@ body {
 .h {
   border-top: 1px solid black;
   border-bottom: 1px solid black;
+}
+
+#board, table {
+    margin: auto;
+    width: 60%;
 }
