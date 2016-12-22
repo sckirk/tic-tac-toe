@@ -20,17 +20,18 @@ var ApplicationView = Backbone.View.extend({
     },
 
     newGame: function(event) {
-        this.model = new Game();
+        this.currentGame = new Game();
         console.log('clicked to start a new game');
         console.log(this.model.playerX);
         console.log(this.model.gameBoard);
-        this.createNewBoard(this.model);
+        this.createNewBoard(this.currentGame, this.model); //this.model is passing the collection
     },
 
-    createNewBoard: function(boardViewModel) {
+    createNewBoard: function(mod, coll) {
         var options = {
             el: $('#board'),
-            model: boardViewModel // the ApplicationView and the BoardView use the same model, the GAME.
+            model: mod,
+            collection: coll
         };
 
         this.game = new BoardView(options);

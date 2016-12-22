@@ -37,6 +37,14 @@ var BoardView = Backbone.View.extend({
                     console.log(this.model.outcome);
                     console.log(this.model.players);
                     alert('game over, winner is: ' + this.model.outcome);
+
+                    var rawGame = {
+                        board: this.model.board,
+                        players: this.model.players,
+                        outcome: this.model.outcome
+                    };
+
+                    this.collection.create(rawGame);
                 } else {
                     this.model.switchTurn();
                     this.currentPlayerImage();

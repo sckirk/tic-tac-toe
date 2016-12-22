@@ -1,15 +1,15 @@
 import $ from 'jquery';
 
-import GameList from 'app/collections/game_list';
+import GameCollection from 'app/collections/game_collection';
 import ApplicationView from 'app/views/application_view';
 
 $(document).ready(function() {
-    var gameList = new GameList();
-    gameList.fetch();
+    var gameCollection = new GameCollection();
+    gameCollection.fetch();
 
     var appView = new ApplicationView({
         el: $('#application'),
-        model: gameList
+        model: gameCollection
     });
 
     appView.render();
