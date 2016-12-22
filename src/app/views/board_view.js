@@ -45,6 +45,7 @@ var BoardView = Backbone.View.extend({
                     };
 
                     this.collection.create(rawGame);
+                    this.trigger('refresh');
                 } else {
                     this.model.switchTurn();
                     this.currentPlayerImage();

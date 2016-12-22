@@ -7,9 +7,9 @@ var GameCollection = Backbone.Collection.extend({
     model: Game,
     url: 'http://localhost:3000/api/v1/games', // this option magically communicates persistance
 
-    // parse: function(data){
-    //     return data.games;
-    // }
+    parse: function(data){
+        return data;
+    }
 });
 
 export default GameCollection;

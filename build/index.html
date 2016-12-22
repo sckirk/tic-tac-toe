@@ -26,36 +26,39 @@
 
         <main id="board">
             <h4>~~~~~~~~~~~~~~~~~~~~~~~~~~~</h4>
-          <table>
-            <tr>
-              <td class="square" row="0" col="0">
-                  <!-- <img src="imgs/peach.jpg" alt="O - peach" width="100" height="100"> -->
-              </td>
-              <td class="square v" row="0" col="1">
-                  <!-- <img src="imgs/rosemary.jpg" alt="X - rosemary" width="100" height="100"> -->
-              </td>
-              <td class="square" row="0" col="2"></td>
-            </tr>
-            <tr>
-              <td class="square h" row="1" col="0"></td>
-              <td class="square v h" row="1" col="1"></td>
-              <td class="square h" row="1" col="2"></td>
-            </tr>
-            <tr>
-              <td class="square" row="2" col="0"></td>
-              <td class="square v" row="2" col="1"></td>
-              <td class="square" row="2" col="2"></td>
-            </tr>
-          </table>
+            <table>
+                <tr>
+                    <td class="square" row="0" col="0">
+                        <!-- <img src="imgs/peach.jpg" alt="O - peach" width="100" height="100"> -->
+                    </td>
+                    <td class="square v" row="0" col="1">
+                        <!-- <img src="imgs/rosemary.jpg" alt="X - rosemary" width="100" height="100"> -->
+                    </td>
+                    <td class="square" row="0" col="2"></td>
+                </tr>
+                <tr>
+                    <td class="square h" row="1" col="0"></td>
+                    <td class="square v h" row="1" col="1"></td>
+                    <td class="square h" row="1" col="2"></td>
+                </tr>
+                <tr>
+                    <td class="square" row="2" col="0"></td>
+                    <td class="square v" row="2" col="1"></td>
+                    <td class="square" row="2" col="2"></td>
+                </tr>
+            </table>
         </main>
 
         <section>
             <h4>Instructions: Player ROSEMARY will always start. Player PEACH goes second every round. Choose your position wisely.</h4>
         </section>
 
-        <section id="end-of-game-pop-up"></section>
-    </div>
+        <button type="button" name="button" class="warning button" id="show-games-button">show a list of games</button>
 
-    <script src="/app.bundle.js" charset="utf-8"></script>
-</body>
-</html>
+        <section id="list-games-info">
+            <h3>Game History:</h3>
+        </section>
+
+        <script src="/app.bundle.js" charset="utf-8"></script>
+    </body>
+    </html>

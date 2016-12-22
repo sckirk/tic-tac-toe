@@ -7,6 +7,7 @@ import Game from 'app/models/game';
 var ApplicationView = Backbone.View.extend({
     initialize: function() {
         $('#board').hide();
+        $('#list-games-info').empty();
         $('#X').hide();
         $('#O').hide();
     },
@@ -16,11 +17,13 @@ var ApplicationView = Backbone.View.extend({
     },
 
     events: {
-        'click #new-button': 'newGame'
+        'click #new-button': 'newGame',
+        'click #show-games-button': 'showAllGames'
     },
 
     newGame: function(event) {
         this.currentGame = new Game();
+        $('#list-games-info').hide();
         console.log('clicked to start a new game');
         console.log(this.model.playerX);
         console.log(this.model.gameBoard);
@@ -43,6 +46,18 @@ var ApplicationView = Backbone.View.extend({
         $('#board').show();
         this.game.currentPlayerImage();
 
+    },
+
+    showAllGames: function() {
+        $('#list-games-info').show();
+        $('#list-games-info').empty();
+        this.model.fetch().done(function(APIdata) {
+            APIdata.forEach(function(eachGame) {        console.log(eachGame);
+                $('#list-games-info').append("<li>ID: " + eachGame.id);
+                $('#list-games-info').append("Winner: " + eachGame.outcome + "  ~  ");
+                $('#list-games-info').append("Players: " + eachGame.players + "</li>");
+            });
+        });
     }
 
 });
